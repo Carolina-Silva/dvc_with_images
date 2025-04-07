@@ -1,0 +1,31 @@
+stages:
+  cut-slices:
+    cmd: python src/utils/cut_slices.py
+    deps:
+      - src/utils/cut_slices.py
+    params:
+      - slicer.raw_data
+      - slicer.input_dir
+    outs:
+      - /data/input
+
+  process-slices:
+    cmd: python src/utils/process_image.py
+    deps:
+      - src/utils/process_image.py
+    params:
+      - processor.input_dir
+      - processor.intermediate_dir
+    outs:
+      - data/intermediate
+
+  count-objects:
+    cmd: python src/utils/count.py
+    deps:
+      - src/utils/count.py
+    params:
+      - counter.intermediate_dir
+      - counter.output_csv
+    outs:
+      - data/output/results.csv
+

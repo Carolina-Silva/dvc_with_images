@@ -1,0 +1,11 @@
+slicer:
+  raw_data: images/data/raw/volume_lines.tif
+  input_dir: images/data/input
+
+processor:
+  input_dir: images/data/input
+  intermediate_dir: images/data/intermediate
+
+counter:
+  intermediate_dir: images/data/intermediate
+  output_csv: images/data/output/results.csv
