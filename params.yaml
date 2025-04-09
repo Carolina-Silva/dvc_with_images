@@ -1,11 +1,11 @@
 slicer:
-  raw_data: images/data/raw/volume_lines.tif
-  input_dir: images/data/input
+  raw_data: data/raw/volume_lines.tif
+  input_dir: data/input
 
 processor:
-  input_dir: images/data/input
-  intermediate_dir: images/data/intermediate
+  input_dir: data/input
+  intermediate_dir: data/intermediate
 
 counter:
-  intermediate_dir: images/data/intermediate
-  output_csv: images/data/output/results.csv
+  intermediate_dir: data/intermediate
+  output_csv: data/output/results.csv

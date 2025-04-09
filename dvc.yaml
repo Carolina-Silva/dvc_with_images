@@ -1,31 +1,36 @@
 stages:
   cut-slices:
-    cmd: python src/utils/cut_slices.py
+    cmd: python src/utils/run_cut_slices.py
     deps:
       - src/utils/cut_slices.py
+      - src/utils/run_cut_slices.py
+      - data/raw/volume_lines.tif
+    outs:
+      - data/input
     params:
       - slicer.raw_data
       - slicer.input_dir
-    outs:
-      - /data/input
 
   process-slices:
-    cmd: python src/utils/process_image.py
+    cmd: python src/utils/run_process_images.py
     deps:
       - src/utils/process_image.py
+      - src/utils/run_process_images.py
+      - data/input
+    outs:
+      - data/intermediate
     params:
       - processor.input_dir
       - processor.intermediate_dir
-    outs:
-      - data/intermediate
 
   count-objects:
-    cmd: python src/utils/count.py
+    cmd: python src/utils/run_count_objects.py
     deps:
       - src/utils/count.py
+      - src/utils/run_count_objects.py
+      - data/intermediate
+    outs:
+      - data/output/results.csv
     params:
       - counter.intermediate_dir
       - counter.output_csv
-    outs:
-      - data/output/results.csv
-
