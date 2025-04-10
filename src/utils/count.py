@@ -1,5 +1,6 @@
 import os
 import csv
+import json
 from skimage.io import imread
 from skimage.measure import label
 
@@ -26,6 +27,9 @@ class ObjectCounter:
                 resultados.append((fname, count))
 
         self.save_csv(resultados)
+        self.save_metrics_json(resultados)
+        print(f"Resultados salvos em {self.csv_output_path}")
+        print(f"Contagem de objetos concluída para {len(resultados)} imagens.")
 
     def save_csv(self, data):
         save_url = os.path.join(self.csv_output_path, "results.csv")
@@ -33,3 +37,12 @@ class ObjectCounter:
             writer = csv.writer(csv_file)
             writer.writerow(["arquivo", "quantidade_objetos"])
             writer.writerows(data)
+    
+    def save_metrics_json(self, data):
+        total = sum(int(row[1]) for row in data)
+        metrics = {
+            "quantidade_total_objetos": total,
+            "arquivos_processados": len(data)
+        }
+        with open(os.path.join(self.csv_output_path, "metrics.json"), "w") as f:
+            json.dump(metrics, f, indent=4)        

@@ -34,3 +34,6 @@ stages:
     params:
       - counter.intermediate_dir
       - counter.output_csv
+    metrics:
+      - data/output/metrics.json
+
