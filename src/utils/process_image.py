@@ -16,7 +16,7 @@ class ImageProcessor:
         if image.dtype != np.uint8:
             image = (image * 255).astype(np.uint8)
 
-        kernel = np.ones((5, 5), dtype="uint8")
+        kernel = np.ones((10, 10), dtype="uint8")
         new_image = cv2.dilate(image, kernel, iterations=1)
         return new_image
 

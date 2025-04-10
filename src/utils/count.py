@@ -12,7 +12,7 @@ class ObjectCounter:
     def count_objects_in_image(self, image):
         # Conta componentes conectados (0 é fundo)
         labeled = label(image)
-        return labeled.max()
+        return labeled.max() + 1
 
     def process_all(self):
         resultados = []
