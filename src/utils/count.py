@@ -12,7 +12,7 @@ class ObjectCounter:
     def count_objects_in_image(self, image):
         # Conta componentes conectados (0 é fundo)
         labeled = label(image)
-        return labeled.max() + 1
+        return labeled.max()
 
     def process_all(self):
         resultados = []
@@ -28,7 +28,8 @@ class ObjectCounter:
         self.save_csv(resultados)
 
     def save_csv(self, data):
-        with open(self.csv_output_path, mode='w', newline='') as csv_file:
+        save_url = os.path.join(self.csv_output_path, "results.csv")
+        with open(save_url, mode='w', newline='') as csv_file:
             writer = csv.writer(csv_file)
             writer.writerow(["arquivo", "quantidade_objetos"])
             writer.writerows(data)
