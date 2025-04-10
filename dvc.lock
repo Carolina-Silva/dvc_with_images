@@ -61,8 +61,8 @@ stages:
       nfiles: 100
     - path: src/utils/count.py
       hash: md5
-      md5: 0dd37daf8880ba136abefdc3cf6be313
-      size: 1028
+      md5: a8f0088e4de4a38065037fd7086318a2
+      size: 1081
     - path: src/utils/run_count_objects.py
       hash: md5
       md5: 1f56a2bb3f973d21a6e35186cddea283
@@ -70,9 +70,9 @@ stages:
     params:
       params.yaml:
         counter.intermediate_dir: data/intermediate
-        counter.output_csv: data/output/results.csv
+        counter.output_csv: data/output
     outs:
     - path: data/output/results.csv
       hash: md5
-      md5: a5cb8dfb186aba390f0e99c25c8fecc9
-      size: 2504
+      md5: df871073e5651018d65530f1aabc7369
+      size: 2501
