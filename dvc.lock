@@ -61,8 +61,8 @@ stages:
       nfiles: 100
     - path: src/utils/count.py
       hash: md5
-      md5: 74d6fbeb7d3f6f249d18b95bda83b3b5
-      size: 1628
+      md5: 8168b3e0bd01fb9898af623545a1c108
+      size: 2156
     - path: src/utils/run_count_objects.py
       hash: md5
       md5: 1f56a2bb3f973d21a6e35186cddea283

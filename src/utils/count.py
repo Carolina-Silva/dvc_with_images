@@ -3,6 +3,8 @@ import csv
 import json
 from skimage.io import imread
 from skimage.measure import label
+import matplotlib.pyplot as plt
+import pandas as pd
 
 
 class ObjectCounter:
@@ -27,6 +29,7 @@ class ObjectCounter:
                 resultados.append((fname, count))
 
         self.save_csv(resultados)
+        self.save_plots(resultados)
         self.save_metrics_json(resultados)
         print(f"Resultados salvos em {self.csv_output_path}")
         print(f"Contagem de objetos concluída para {len(resultados)} imagens.")
@@ -37,6 +40,17 @@ class ObjectCounter:
             writer = csv.writer(csv_file)
             writer.writerow(["arquivo", "quantidade_objetos"])
             writer.writerows(data)
+    
+    def save_plots(self, data):
+        save_url = os.path.join(self.csv_output_path, "plot.png")
+        
+        df = pd.DataFrame(data, columns=["arquivo", "quantidade_objetos"])
+        df['quantidade_objetos'] = df['quantidade_objetos'].astype(int)
+        df['arquivo'] = df['arquivo'].astype(str)
+        
+        df.plot(kind = 'hist', x = 'arquivo', y = 'quantidade_objetos')
+        plt.savefig(save_url)
+        plt.close()
     
     def save_metrics_json(self, data):
         total = sum(int(row[1]) for row in data)
